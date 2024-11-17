@@ -18,19 +18,24 @@ using namespace std;
 
 
 
-struct UserInfo {
-    string name;
-    string id;
-    string pw;
-    string userType;
+
+
+class UserInfo {
+public:
+    string name, id, pw;
+    int userType;
+
+    // 사용자 정보를 저장할 생성자
+    UserInfo(const string& id, const string& pw, const string& name, const int& userType)
+        : id(id), pw(pw), name(name), userType(userType) {}
 };
 
 vector<UserInfo> loadUsers(const string& filename) {
     vector<UserInfo> users;
     ifstream file(filename);
     if (!file.is_open()) {
-        cerr << "사용자 정보를 불러올 수 없습니다: " << filename << endl;
-        return users;
+        cerr << "파일을 열 수 없습니다: " << filename << endl;
+        exit(1);  // 파일 열기 실패 시 프로그램 종료
     }
 
     string line;
