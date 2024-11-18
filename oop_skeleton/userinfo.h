@@ -3,7 +3,8 @@
 //  oop_skeleton
 //
 //  Created by Louise Nayeong Koh on 11/17/24.
-//
+// "this is second commit_integrated with 'Jieun-Lee' on 11/18/24." 
+
 
 #include <iostream>
 #include <string>
@@ -15,10 +16,6 @@
 #include <sstream>
 #include <iomanip> // for std::setprecision
 using namespace std;
-
-
-
-
 
 class UserInfo {
 public:
@@ -41,7 +38,7 @@ vector<UserInfo> loadUsers(const string& filename) {
     string line;
     while (getline(file, line)) {
         if (line.empty()) continue; // 비어있는 라인은 건너뜁니다.
-        
+
         stringstream ss(line);
         string name, id, pw, userType;
 
@@ -49,9 +46,10 @@ vector<UserInfo> loadUsers(const string& filename) {
             getline(ss, id, ',') &&
             getline(ss, pw, ',') &&
             getline(ss, userType, ',')) {
-            users.push_back({name, id, pw, userType});
-        } else {
-            cerr << "잘못된 데이터 형식: " << line << endl;
+            users.push_back({ name, id, pw, userType });
+        }
+        else {
+            cerr << "잘못된 데이터 형식�: " << line << endl;
         }
     }
     file.close();
@@ -67,3 +65,47 @@ UserInfo* authenticateUser(const string& id, const string& pw, vector<UserInfo>&
     return nullptr; // 인증 실패 시 nullptr 반환
 }
 
+
+class Grade {
+public:
+    string year;
+    string semester;
+    string courseType;   // �̼�����
+    string courseName;
+    int credits;         // ����
+    string grade;        // ����
+    double gradePoint;   // ���� (GPA ȯ��)
+
+    Grade(const string& year, const string& semester, const string& courseType,
+        const string& courseName, int credits, const string& grade, double gradePoint)
+        : year(year), semester(semester), courseType(courseType), courseName(courseName),
+        credits(credits), grade(grade), gradePoint(gradePoint) {}
+};
+
+class StudentInfo : public UserInfo {
+public:
+    vector<Grade> grades;
+
+    StudentInfo(const string& id, const string& pw, const string& name, const int& userType)
+        : UserInfo(id, pw, name, userType) {}
+
+    void addGrade(const Grade& grade) {
+        grades.push_back(grade);
+    }
+
+    double calculateGPA(const string& semester = "��ü") {
+        double totalPoints = 0;
+        int totalCredits = 0;
+
+        for (const auto& grade : grades) {
+            if (semester == "��ü" || grade.semester == semester) {
+                if (grade.gradePoint >= 0) { // ������ ��ȿ�� ��츸 ���
+                    totalPoints += grade.gradePoint * grade.credits;
+                    totalCredits += grade.credits;
+                }
+            }
+        }
+        return totalCredits > 0 ? totalPoints / totalCredits : 0.0;
+    }
+};
+#pragma once
