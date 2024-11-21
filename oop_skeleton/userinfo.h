@@ -3,7 +3,7 @@
 //  oop_skeleton
 //
 //  Created by Louise Nayeong Koh on 11/17/24.
-// "this is third commit_integrated with 'Siwon-Kim' on 11/21/24."
+// "this is fourth commit_integrated with 'Dohyeon-Kim' on 11/21/24."
 
 
 #include <iostream>

@@ -3,7 +3,7 @@
 //  oop_skeleton
 //
 //  Created by Lousie Nayeong Koh on 11/16/24.
-// "this is third commit_integrated with 'Siwon-Kim' on 11/21/24."
+// "this is fourth commit_integrated with 'Dohyeon-Kim' on 11/21/24."
 
 
 #include "userinfo.h"
@@ -42,6 +42,7 @@ void displayGrades(StudentInfo* student, const string& semester) {
     cout << "------------------------------------------------------------" << endl;
     cout << "�� ���� ���: " << fixed << setprecision(1) << gpa << endl;
 }
+
 
 int main() {
 
@@ -150,6 +151,15 @@ int main() {
         cout << "로그인 실패: ID 또는 비밀번호가 잘못되었습니다.\n";
     }
 
+    
+    // created by Dohyeon
+    vector<Subject> subjects = initializeSubjects();
+    cout << "========== 성적 관리 프로그램 ==========\n";
+    viewAllSubjects(subjects);
+    modifySubject(subjects);
+    cout << "\n프로그램이 종료되었습니다.\n";
+
     return 0;
+    
 }
 
