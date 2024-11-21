@@ -3,10 +3,11 @@
 //  oop_skeleton
 //
 //  Created by Lousie Nayeong Koh on 11/16/24.
-// "this is second commit_integrated with 'Jieun-Lee' on 11/18/24." 
+// "this is third commit_integrated with 'Siwon-Kim' on 11/21/24."
 
 
 #include "userinfo.h"
+#include "subject.h"
 
 void displayGrades(StudentInfo* student, const string& semester) {
 
