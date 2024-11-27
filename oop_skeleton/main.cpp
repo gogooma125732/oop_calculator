@@ -43,6 +43,22 @@ void displayGrades(StudentInfo* student, const string& semester) {
     cout << "�� ���� ���: " << fixed << setprecision(1) << gpa << endl;
 }
 
+void viewAllSubjects(const vector<Subject>& subjects) {
+    cout << "*************************************************************************************\n";
+    cout << setw(25) << "과목명" << setw(15) << "학점" << setw(20) << "수강 정원"
+         << setw(20) << "수강 인원" << setw(20) << "성적 평가" << endl;
+    cout << "------------------------------------------------------------------------------------\n";
+
+    for (int i = 0; i < subjects.size(); i++) {
+        cout << setw(30) << subjects[i].getName()
+             << setw(10) << subjects[i].getCredit()
+             << setw(13) << subjects[i].getCapacity()
+             << setw(15) << subjects[i].getEnrolled()
+             << setw(23) << subjects[i].getGradeSystem() << endl;
+    }
+    cout << "*************************************************************************************\n";
+}
+
 
 int main() {
 
@@ -152,7 +168,6 @@ int main() {
         cout << "로그인 실패: ID 또는 비밀번호가 잘못되었습니다.\n";
     }
 
-    
     // created by Dohyeon
     vector<Subject> subjects = initializeSubjects();
     cout << "========== 성적 관리 프로그램 ==========\n";
