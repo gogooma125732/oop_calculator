@@ -46,8 +46,9 @@ void displayGrades(StudentInfo* student, const string& semester) {
 
 int main() {
 
-    // 사용자 정보 로드
+    // 사용자 로그인 정보 로드
     string filename = "./users.txt";
+    // !! 학생-> 과목-> 성적, 교수 텍스트 파일 로드 필요
     vector<UserInfo> users = loadUsers(filename);
     if (users.empty()) {
         cerr << "사용자 정보가 없습니다. 프로그램을 종료합니다." << endl;

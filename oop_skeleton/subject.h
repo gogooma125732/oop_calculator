@@ -25,11 +25,11 @@ private:
     string gradingSystem;
     
     // created by Dohyeon
-    string classname;
-    int credit;
-    int capacity;
-    int enrolled;
-    string grade_system;
+    string classname; // -> subjectName;
+    int credit; // 학점
+    int capacity; // 수강가능한 인원(max, limit)
+    int enrolled; // 수강중인 인원
+    string grade_system; // -> gradingSystem;
 
 public:
     //created by Siwon
@@ -43,6 +43,7 @@ public:
     }
 
     // 과목 정보 출력: for문 부분은 GPT가 제안해준 겁니다.
+    //!! from Subject
     void displayInfo() const {
         cout << "과목명: " << subjectName << endl;
         cout << "교수명: " << professor << endl;
@@ -63,15 +64,19 @@ public:
         return false;
     }
 
-    // 과목명 반환: 이후에 과목 조회할때 필요함
+    // !! 강의 과목 조회; 과목명 반환: 이후에 과목 조회할때 필요함-> 교수가 강의중인 과목만 반환하도록 수정 필요
     string getSubjectName() const {
         return subjectName;
     }
-
-    // 학생 점수 맵 반환: 학생 id와 점수를 매칭칭
+    // !! 본인이 강의하는 과목 선택-> 수강 학생 확인(이름, id) 필요
+    
+    // 학생 점수 맵 반환: 학생 id와 점수를 매칭
     unordered_map<string, double>& getStudentGrades() {
         return studentGrades;
     }
+    
+    // 평가 제도 별 성적 평가계산식 필요 'calculateGrades'-> Subject 클래스로 종속
+    
     
     //created by Dohyeon
     // 생성자
@@ -95,12 +100,18 @@ public:
     }
 
     // 각 멤버 변수 접근자 함수 (getter)
-    string getName() const { return classname; }
+    /*
+    string getName() const { return subjectName; }
     int getCredit() const { return credit; }
     int getCapacity() const { return capacity; }
     int getEnrolled() const { return enrolled; }
     string getGradeSystem() const { return grade_system; }
-    
+    */
+    //! -> subjectName, credit, capacity, enrolled, grade_system,, etc를 반환하는 반환하는 함수''viewGrades()'
+    //! -> student, professor, administrator가 함수 'viewGrades()' 사용 할 때, 재정의 필요 (본인 기능에 맞춘 정보만 조회 가능하도록)
+    string viewGrades() {
+    // int 타입 변수는 반환할 때 타입 변환 필요
+    }
 };
 
 //created by Dohyeon
